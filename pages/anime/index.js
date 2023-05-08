@@ -11,10 +11,10 @@ const index = ({ animes }) => {
         <Table striped bordered hover>
           <thead>
             <tr>
-              <th>#</th>
-              <th>Nome</th>
+              <th>Detalhes</th>
+              <th>titulo</th>
+              <th>Duração</th>
               <th>Ano</th>
-              <th>Ações</th>
             </tr>
           </thead>
           <tbody>
@@ -25,9 +25,7 @@ const index = ({ animes }) => {
                 <td>{anime.start_date}</td>
                 <td>
                   <Link href={`/animes/${anime.mal_id}`}>
-                    <a>
-                      <FaSearch />
-                    </a>
+
                   </Link>
                 </td>
               </tr>
@@ -42,8 +40,11 @@ const index = ({ animes }) => {
 export default index
 
 export async function getServerSideProps() {
-    const response = await apiAnimes.get('/anime');
-    const animes = response.data;
+    const resultado = await apiAnimes.get('/anime');
+    const animes = resultado.data.data
+
+
+
     return {
       props: { animes },
     };
