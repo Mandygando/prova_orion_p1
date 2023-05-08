@@ -6,38 +6,38 @@ import apiAnimes from '../../services/apiAnimes'
 
 
 const index = ({ animes }) => {
-
     return (
-        <Pagina titulo="Animes">
-          <Table striped bordered hover>
-            <thead>
-              <tr>
-                <th>Detalhes</th>
-                <th>Nome</th>
-                <th>Ano</th>
-                <th>Ações</th>
+      <Pagina titulo="Animes">
+        <Table striped bordered hover>
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Nome</th>
+              <th>Ano</th>
+              <th>Ações</th>
+            </tr>
+          </thead>
+          <tbody>
+            {animes.map((anime) => (
+              <tr key={anime.mal_id}>
+                <td>{anime.mal_id}</td>
+                <td>{anime.title}</td>
+                <td>{anime.start_date}</td>
+                <td>
+                  <Link href={`/animes/${anime.mal_id}`}>
+                    <a>
+                      <FaSearch />
+                    </a>
+                  </Link>
+                </td>
               </tr>
-            </thead>
-            <tbody>
-              {animes.map((anime) => (
-                <tr key={anime.mal_id}>
-                  <td>{anime.mal_id}</td>
-                  <td>{anime.title}</td>
-                  <td>{anime.start_date}</td>
-                  <td>
-                    <Link href={`/animes/${anime.mal_id}`}>
-                      <a>
-                        <FaSearch />
-                      </a>
-                    </Link>
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </Table>
-        </Pagina>
-      );
-}
+            ))}
+          </tbody>
+        </Table>
+      </Pagina>
+    );
+  };
+  
 
 export default index
 
