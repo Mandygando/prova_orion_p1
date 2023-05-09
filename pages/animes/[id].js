@@ -12,11 +12,11 @@ const Detalhes = ({ anime }) => {
             <Row>
                 <Col md={4}>
                     <Card border="danger" bg="danger">
-                        <Card.Header bg="danger">Foto</Card.Header>
+                        <Card.Header bg="warning">Foto</Card.Header>
                         <Card.Body >
                             <CardImg src={anime.images.jpg.large_image_url} />
                             <Col>
-                                <Link className='btn btn-primary mt-3 mb-3 pl-3' target="_blank" href={'/imagens/' + anime.mal_id}> <GoLinkExternal /> Ampliar</Link>
+                                <Link className='btn btn-warning mt-3 mb-3 pl-3' target="_blank" href={'/imagens/' + anime.mal_id}> <GoLinkExternal /> Ampliar</Link>
                             </Col>
                         </Card.Body>
 
@@ -24,9 +24,7 @@ const Detalhes = ({ anime }) => {
                     </Card>
 
                     <Col>
-                        <Link className='btn btn-success mt-3' href={'/animes/'}>
-                            <AiOutlineCaretLeft /> Voltar</Link>
-                    </Col>
+                        <Link className='btn btn-warning mt-3' href={'/animes'}><AiOutlineCaretLeft />Voltar</Link></Col>
                 </Col>
 
                 <Col md={8}>
@@ -71,9 +69,6 @@ export async function getServerSideProps(context) {
     const anime = resultado.data.data
 
     return {
-        props: {
-            anime,
-
-        },
+        props: { anime },
     }
 }
